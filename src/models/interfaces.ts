@@ -11,4 +11,13 @@ export interface Messages {
 	time: string;
 }
 
+export interface User {
+	user: string,
+	password: string
+}
 
+declare module 'express-session' {
+	interface Session {
+		loggedIn: boolean;
+	}
+}
