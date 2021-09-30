@@ -15,6 +15,7 @@ Auth:
 | ------------- |:-------------:| -----:|
 | GET |https://desafio24.herokuapp.com/api/auth/islogged/ |Check if the user is logged, returns a boolean |
 | POST |https://desafio24.herokuapp.com/api/auth/login | Login by passing JSON Body |
+| GET |https://desafio24.herokuapp.com/api/auth/logout/ |Logout the current session |
 
 Auth JSON Body template:
 
