@@ -23,7 +23,7 @@ app.use(
 app.use(
 	session({
 		secret: 'mysecret123',
-		cookie: { sameSite: 'none', secure: true, maxAge: 70000 },
+		cookie: { sameSite: 'none', secure: true, maxAge: 60000 },
 		saveUninitialized: true,
 		resave: true,
 	})
