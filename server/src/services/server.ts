@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import session from 'express-session';
-import cors from 'cors'
-import cookieParser from 'cookie-parser'
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import * as http from 'http';
 import { mongoose } from '../db/mongoose';
 import apiRouter from '../routes/index';
@@ -10,6 +10,7 @@ mongoose();
 const app = express();
 const server = new http.Server(app);
 
+app.set('trust proxy', 1);
 app.set('json spaces', 2);
 app.use(cookieParser());
 app.use(
@@ -22,7 +23,7 @@ app.use(
 app.use(
 	session({
 		secret: 'mysecret123',
-		cookie: { maxAge: 70000 },
+		cookie: { sameSite: 'none', secure: true, maxAge: 70000 },
 		saveUninitialized: true,
 		resave: true,
 	})

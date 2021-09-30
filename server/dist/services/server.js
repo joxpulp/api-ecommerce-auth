@@ -32,6 +32,7 @@ var index_1 = __importDefault(require("../routes/index"));
 mongoose_1.mongoose();
 var app = express_1.default();
 var server = new http.Server(app);
+app.set('trust proxy', 1);
 app.set('json spaces', 2);
 app.use(cookie_parser_1.default());
 app.use(cors_1.default({
@@ -41,7 +42,7 @@ app.use(cors_1.default({
 }));
 app.use(express_session_1.default({
     secret: 'mysecret123',
-    cookie: { maxAge: 70000 },
+    cookie: { sameSite: 'none', secure: true, maxAge: 70000 },
     saveUninitialized: true,
     resave: true,
 }));
