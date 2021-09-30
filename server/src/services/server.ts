@@ -1,5 +1,7 @@
 import express, { Request, Response } from 'express';
 import session from 'express-session';
+import cors from 'cors'
+import cookieParser from 'cookie-parser'
 import * as http from 'http';
 import { mongoose } from '../db/mongoose';
 import apiRouter from '../routes/index';
@@ -9,13 +11,18 @@ const app = express();
 const server = new http.Server(app);
 
 app.set('json spaces', 2);
-
+app.use(cookieParser());
+app.use(cors({
+	origin: ['http://localhost:3000'],
+	methods: ['GET', 'POST'],
+	credentials: true
+}));
 app.use(
 	session({
 		secret: 'mysecret123',
-		cookie: { maxAge: 87855454 },
+		cookie: { maxAge: 60000 },
 		saveUninitialized: true,
-		resave: true
+		resave: true,
 	})
 );
 app.use(express.json()); // Indica que el body viene como JSON

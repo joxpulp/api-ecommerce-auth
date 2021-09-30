@@ -1,0 +1,64 @@
+import React, { useState, createContext } from 'react';
+import { useFetch } from '../hook/useFetch';
+
+export const AppContext = createContext();
+
+function AppProvider({ children }) {
+	const [userName, setUserName] = useState('');
+	const [fetchLogin, setFetchLogin] = useState(false);
+	const [fetchIsLogged, setFetchIsLogged] = useState(false);
+	const [fetchLogout, setFetchLogout] = useState(false)
+	const [products, setProducts] = useState([]);
+	const [messages, setMessages] = useState([]);
+	const [logout, setLogout] = useState(false);
+
+	const { data: loginData, setData: setLoginData } = useFetch(
+		fetchLogin && 'http://localhost:8080/api/auth/login',
+		{
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ username: userName }),
+			credentials: 'include',
+		}
+	);
+
+	const { data: loggedData, setData: setLoggedData } = useFetch(
+		fetchIsLogged && 'http://localhost:8080/api/auth/islogged',
+		{ credentials: 'include' }
+	);
+
+	const { data: loggout } = useFetch(
+		fetchLogout && 'http://localhost:8080/api/auth/logout',
+		{ credentials: 'include' }
+	);
+
+	return (
+		<AppContext.Provider
+			value={{
+				userName,
+				setUserName,
+				fetchLogin,
+				setFetchLogin,
+				loginData,
+				loggedData,
+				setFetchIsLogged,
+				fetchIsLogged,
+				products,
+				setProducts,
+				messages,
+				setMessages,
+				logout,
+				setLogout,
+				fetchLogout,
+				setFetchLogout,
+				loggout,
+				setLoggedData,
+				setLoginData,
+			}}
+		>
+			{children}
+		</AppContext.Provider>
+	);
+}
+
+export default AppProvider;
