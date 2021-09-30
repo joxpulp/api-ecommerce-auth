@@ -69,9 +69,9 @@ Product's JSON Body template:
 
 ```Typescript
 {
-    "title": string,
+    "title": "string",
     "price": number,
-    "thumbnail": string,
+    "thumbnail": "string",
 }
 ```
 
@@ -87,9 +87,9 @@ Message's JSON Body template:
 
 ```Typescript
 {
-    "email": string,
-    "message": string,
-    "date": string,
-    "time": string
+    "email": "string",
+    "message": "string",
+    "date": "string",
+    "time": "string"
 }
 ```
