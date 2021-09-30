@@ -12,15 +12,17 @@ const server = new http.Server(app);
 
 app.set('json spaces', 2);
 app.use(cookieParser());
-app.use(cors({
-	origin: ['http://localhost:3000'],
-	methods: ['GET', 'POST'],
-	credentials: true
-}));
+app.use(
+	cors({
+		origin: true,
+		methods: ['GET', 'POST'],
+		credentials: true,
+	})
+);
 app.use(
 	session({
 		secret: 'mysecret123',
-		cookie: { maxAge: 60000 },
+		cookie: { maxAge: 70000 },
 		saveUninitialized: true,
 		resave: true,
 	})

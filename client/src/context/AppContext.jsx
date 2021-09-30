@@ -13,7 +13,7 @@ function AppProvider({ children }) {
 	const [logout, setLogout] = useState(false);
 
 	const { data: loginData, setData: setLoginData } = useFetch(
-		fetchLogin && 'http://localhost:8080/api/auth/login',
+		fetchLogin && 'https://desafio24.herokuapp.com/api/auth/login',
 		{
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -23,12 +23,12 @@ function AppProvider({ children }) {
 	);
 
 	const { data: loggedData, setData: setLoggedData } = useFetch(
-		fetchIsLogged && 'http://localhost:8080/api/auth/islogged',
+		fetchIsLogged && 'https://desafio24.herokuapp.com/api/auth/islogged',
 		{ credentials: 'include' }
 	);
 
 	const { data: loggout } = useFetch(
-		fetchLogout && 'http://localhost:8080/api/auth/logout',
+		fetchLogout && 'https://desafio24.herokuapp.com/api/auth/logout',
 		{ credentials: 'include' }
 	);
 
