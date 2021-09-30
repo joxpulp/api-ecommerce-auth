@@ -42,7 +42,7 @@ app.use(cors_1.default({
 }));
 app.use(express_session_1.default({
     secret: 'mysecret123',
-    cookie: { sameSite: 'none', secure: true, maxAge: 70000 },
+    cookie: { sameSite: 'none', secure: true, maxAge: 60000 },
     saveUninitialized: true,
     resave: true,
 }));
