@@ -1,7 +1,9 @@
 # express-socketio-fakerjs-mongodb
 
 Backend for a products API, simple chatbox, and an endpoint with data mocking for test purposes, made with Express, Socket.io, Faker.js, and MongoDB.
+
 Frontend: https://api-auth.netlify.app/
+
 Backend: https://desafio24.herokuapp.com/
 
 ## Endpoints:
