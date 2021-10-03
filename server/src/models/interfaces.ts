@@ -12,12 +12,13 @@ export interface Messages {
 }
 
 export interface User {
-	user: string,
-	password: string
+	user: string;
+	password: string;
 }
 
 declare module 'express-session' {
 	interface Session {
 		loggedIn: boolean;
 	}
+	
 }

@@ -1,6 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-import session from 'express-session';
-import { User } from '../models/interfaces';
 
 class AuthController {
 	login(req: Request, res: Response) {

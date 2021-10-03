@@ -1,8 +1,10 @@
 import express, { Request, Response } from 'express';
-import session from 'express-session';
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
+import { CONFIG } from '../config/config';
 import * as http from 'http';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import session from 'express-session';
+import connectMongo from 'connect-mongo';
 import { mongoose } from '../db/mongoose';
 import apiRouter from '../routes/index';
 
@@ -22,10 +24,12 @@ app.use(
 );
 app.use(
 	session({
-		secret: 'mysecret123',
-		cookie: { sameSite: 'none', secure: true, maxAge: 60000 },
-		saveUninitialized: true,
+		store: connectMongo.create({ mongoUrl: CONFIG.MONGO_URL }),
+		secret: CONFIG.SECRET,
+		cookie: { sameSite: 'none', secure: 'auto', maxAge: 1000 * 120 },
+		saveUninitialized: false,
 		resave: true,
+		rolling: true
 	})
 );
 app.use(express.json()); // Indica que el body viene como JSON

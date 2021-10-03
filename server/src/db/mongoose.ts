@@ -1,13 +1,9 @@
 import { connect } from 'mongoose';
-import dotenv from 'dotenv';
-
-dotenv.config()
+import { CONFIG } from '../config/config';
 
 export const mongoose = async (): Promise<void> => {
 	try {
-		await connect(
-			process.env.MONGO_URL || 'url de mongo'
-		);
+		await connect(CONFIG.MONGO_URL);
 		console.log('Conectado a base de datos');
 	} catch (error) {
 		console.log(error);

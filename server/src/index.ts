@@ -1,8 +1,7 @@
 import Server from './services/server';
 import { ioServer } from './services/socket';
-
-const port = process.env.PORT || 8080;
+import { CONFIG } from './config/config';
 
 ioServer(Server);
-Server.listen(port, () => console.log(`Server running in port: ${port}`));
+Server.listen(CONFIG.PORT, () => console.log(`Server running in port: ${CONFIG.PORT}`));
 Server.on('error', (error) => console.error(`There was an error: ${error}`));
